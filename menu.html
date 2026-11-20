@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ginza Buffet - Menu &amp; Info</title>
+<meta name="description" content="Ginza Buffet in Taylors, SC — over 200 Chinese, Japanese, Seafood and BBQ items, hibachi grill and sushi. 3023 Wade Hampton Blvd, Taylors, SC 29687. (864) 268-6566.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Ginza Buffet - Taylors","servesCuisine":["Chinese","Japanese","Seafood","Sushi","BBQ"],"telephone":"+1-864-268-6566","address":{"@type":"PostalAddress","streetAddress":"3023 Wade Hampton Blvd","addressLocality":"Taylors","addressRegion":"SC","postalCode":"29687","addressCountry":"US"}}
+</script>
+<style>
+:root{--red:#c70000;--red-hover:#f60000;--ink:#1b1b1b;--muted:#5e5e5e;--line:#e2e2e2;--soft:#f6f6f6;--bg:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Open Sans',Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+h1,h2,h3,h4{font-family:'League Spartan',Arial,sans-serif;font-weight:400;line-height:1.2;margin:0 0 .5em}
+a{color:var(--red)}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
+section{padding:56px 0;scroll-margin-top:80px}
+.center{text-align:center}
+.rule{width:50px;border:0;border-bottom:2px solid var(--line);margin:0 auto 32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 32px;border-radius:4px;background:var(--red);color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.071em;font-weight:700;font-size:14px;border:0;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--red-hover)}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:80px}
+header img{height:64px;width:auto}
+header nav{display:flex;gap:24px;font-size:14px;text-transform:uppercase;letter-spacing:.06em}
+header nav a{color:var(--ink);text-decoration:none}
+header nav a:hover{color:var(--red)}
+.hdr-phone{font-weight:700;color:var(--red);text-decoration:none;white-space:nowrap}
+@media (max-width:760px){header nav{display:none}header img{height:52px}}
+
+/* hero */
+.hero{position:relative;min-height:560px;display:flex;align-items:center;color:#000;
+  background:linear-gradient(rgba(255,255,255,.25),rgba(255,255,255,.25)),url(images/hero.jpg) center/cover no-repeat}
+.hero-card{background:rgba(255,255,255,.88);padding:40px 32px;max-width:560px;border-radius:4px}
+.hero h1{font-size:40px}
+.hero p{font-size:18px;margin:0 0 24px}
+@media (max-width:600px){.hero{min-height:480px}.hero h1{font-size:30px}.hero-card{padding:28px 20px}}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about h2{font-size:32px;color:var(--red)}
+.about h3{font-size:22px}
+.about p{color:var(--muted)}
+.about img{border-radius:4px;width:100%;max-width:460px;margin:0 auto}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+
+/* served */
+.served{background:var(--soft)}
+.served ul{list-style:none;padding:0;margin:0 auto;max-width:640px;display:grid;gap:12px}
+.served li{background:#fff;border:1px solid var(--line);border-radius:4px;padding:14px 18px;font-weight:600}
+.served li::before{content:"✓";color:var(--red);margin-right:10px}
+
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.cat img{aspect-ratio:2/1;object-fit:cover;width:100%;border-radius:4px;margin-bottom:16px}
+.cat h4{font-size:22px;color:#151515}
+.cat p{color:var(--muted);margin:0}
+@media (max-width:700px){.cats{grid-template-columns:1fr}}
+
+/* menu */
+.menu{background:var(--soft)}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.menu-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px 24px}
+.menu-card h3{font-size:22px;color:var(--red);margin-bottom:4px}
+.menu-card .when{font-size:13px;color:var(--muted);margin-bottom:16px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row small{display:block;color:var(--muted);font-size:12px}
+.row b{white-space:nowrap}
+.offer{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.offer .menu-card p{margin:0;color:var(--muted)}
+.note{text-align:center;font-weight:700;margin-top:24px;font-size:14px}
+@media (max-width:900px){.menu-grid{grid-template-columns:1fr}.offer{grid-template-columns:1fr}}
+
+/* contact */
+.contact{text-align:center}
+.info h4{font-size:22px;margin-top:24px}
+.info p{margin:0 0 6px;color:var(--muted)}
+.map{margin-top:40px;border:0;width:100%;height:360px;border-radius:4px}
+
+footer{background:#151515;color:#c6c6c6;text-align:center;padding:32px 16px;font-size:14px}
+footer a{color:#fff;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html"><img src="images/logo.png" alt="Ginza Buffet"></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#categories">Categories</a>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="hdr-phone" href="tel:8642686566">(864) 268-6566</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-card">
+      <h1>WELCOME TO GINZA BUFFET (Taylors)</h1>
+      <p>Dine-in • Carry out • JAPANESE • SEAFOOD • BBQ • CHINESE</p>
+      <a class="btn" href="tel:8642686566">Call For Details</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2>ALL YOUR FAVORITE DISHES - ALL IN ONE PLACE</h2>
+      <h3>The Largest and Most Elegant Chinese, Japanese &amp; Seafood Cuisine Restaurant in Taylors</h3>
+      <p>We have over 150 different items on our buffet. Plus we have a HIBACHI section where you can select your favorites and we will cook them for you on the HIBACHI at no additional charge.</p>
+      <p>We offer Ribeye Steak, Salmon Fish, Butter Shrimp, Black Pepper Shrimp, Crabmeat, Cheese, General’s Chicken &amp; Different Selections of Sushi. Large selection of salads, fruits, and desserts.</p>
+      <p>We have a huge private room available for birthday parties, office meetings, and weddings.</p>
+      <p><strong>Ask For More Information. Call Us Please</strong><br>Phone: <a href="tel:8642686566">(864) 268-6566</a></p>
+    </div>
+    <img src="images/flyer.jpeg" alt="Ginza Buffet — sushi, Japanese food, seafood, BBQ and Chinese food">
+  </div>
+</section>
+
+<section class="served">
+  <div class="wrap center">
+    <h2 style="font-size:32px">What we served.</h2>
+    <hr class="rule">
+    <ul style="text-align:left">
+      <li>Over 200 items</li>
+      <li>All you can eat &amp; Carry out to go &amp; Take out</li>
+      <li>Party room available</li>
+      <li>Gift Certificates Available</li>
+    </ul>
+    <p style="margin-top:32px"><a class="btn" href="#contact">Contact us</a></p>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="wrap">
+    <h2 class="center" style="font-size:32px">CATEGORIES</h2>
+    <hr class="rule">
+    <div class="cats">
+      <div class="cat">
+        <img src="images/bbq.jpg" alt="BBQ" loading="lazy">
+        <h4>BBQ</h4>
+        <p>Barbecue is a method and apparatus for cooking food, often meat, with the heat and hot gases of a fire, smoking wood, or hot coals of charcoal. It may also include application of a marinade, spice rub, or basting sauce to the meat. The techniques used in barbecue are hot smoking and smoke cooking.</p>
+      </div>
+      <div class="cat">
+        <img src="images/seafood.jpg" alt="Seafood" loading="lazy">
+        <h4>SEAFOOD</h4>
+        <p>Come discover wide selection of seafood such as Crab, Mussels, Jumbo Shrimp, Clam, Fish, Crawfish, Squid and more seasonal choices throughout the year.</p>
+      </div>
+      <div class="cat">
+        <img src="images/sushi.jpg" alt="Sushi" loading="lazy">
+        <h4>SUSHI</h4>
+        <p>Each morning our sushi chefs carefully select the freshest seasonal fish and other ingredients, then prepare an assortment of over 20 kinds of Nigiri, Sushi and Sashimi. You always enjoy the freshest and most delicious sushi any time.</p>
+      </div>
+      <div class="cat">
+        <img src="images/chinese.jpg" alt="Chinese" loading="lazy">
+        <h4>CHINESE</h4>
+        <p>Variation of the best quality meat with dishes such as bacon wrapped chicken, poultry over our special sauce, and more. Delight yourself with the best quality meat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2 class="center" style="font-size:32px">MENU - All You Can Eat Buffet Price</h2>
+    <hr class="rule">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>LUNCH BUFFET</h3>
+        <div class="when">Monday - Friday 11:00 am - 3:00 pm</div>
+        <div class="row"><span>Adult</span><b>$14.99</b></div>
+        <div class="row"><span>Kids<small>7-10 yrs old</small></span><b>$8.99</b></div>
+        <div class="row"><span>Kids<small>3-6 yrs old</small></span><b>$5.99</b></div>
+        <div class="row"><span>Kids<small>2 yrs old</small></span><b>$2.99</b></div>
+        <div class="row"><span>Beverage</span><b>$2.99</b></div>
+      </div>
+      <div class="menu-card">
+        <h3>DINNER BUFFET</h3>
+        <div class="when">Monday - Friday 3:00 pm - 9:30 pm</div>
+        <div class="row"><span>Adult</span><b>$19.99</b></div>
+        <div class="row"><span>Kids<small>7-10 yrs old</small></span><b>$13.99</b></div>
+        <div class="row"><span>Kids<small>3-6 yrs old</small></span><b>$7.99</b></div>
+        <div class="row"><span>Kids<small>2 yrs old</small></span><b>$3.99</b></div>
+        <div class="row"><span>Beverage</span><b>$2.99</b></div>
+      </div>
+      <div class="menu-card">
+        <h3>SAT. &amp; SUN. ALL DAY DINNER</h3>
+        <div class="when">Saturday 11:00 am - 10:00 pm<br>Sunday 11:00 am - 9:30 pm</div>
+        <div class="row"><span>Adult</span><b>$19.99</b></div>
+        <div class="row"><span>Beverage</span><b>$2.99</b></div>
+      </div>
+    </div>
+    <p class="note">Prices do not include beverage.</p>
+    <div class="offer">
+      <div class="menu-card">
+        <h3>SPECIAL OFFER</h3>
+        <div class="when">Cannot be combined with any other offers</div>
+        <div class="row"><span>Senior Citizen<small>Applicable to 65 yrs old &amp; above. Please present a valid ID.</small></span><b>$1.00 OFF</b></div>
+      </div>
+      <div class="menu-card">
+        <h3>EXTRA CHARGE</h3>
+        <p>A 12% gratuity will be added to all parties of 6 or more people (including children).</p>
+      </div>
+    </div>
+    <p class="note">* HOLIDAY PRICES ARE SUBJECT TO CHANGE WITHOUT NOTICE</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div class="info">
+      <h2 style="font-size:32px">Better yet, see us in person!</h2>
+      <p>We love our customers, so feel free to visit during normal business hours.</p>
+      <h4>GINZA BUFFET - Taylors</h4>
+      <p>3023 Wade Hampton Blvd, Taylors, SC 29687</p>
+      <p><a href="tel:8642686566">(864) 268-6566</a></p>
+      <h4>Business Hours</h4>
+      <p>Sun. - Thu.: 11:00 am – 9:30 pm</p>
+      <p>Fri. - Sat.: 11:00 am – 10:00 pm</p>
+      <p>Lunch: 11:00 am - 3:00 pm</p>
+      <p>Dinner: 3:00 pm - 9:30 pm</p>
+      <p style="margin-top:16px"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Ginza+Buffet/@34.9067487,-82.3318258,18.38z/data=!3m1!5s0x88582c38868030b5:0x6add8c6dda063120!4m15!1m8!3m7!1s0x88582c3886806ce1:0x17685b9fcf6e4e97!2s3023+Wade+Hampton+Blvd,+Taylors,+SC+29687!3b1!8m2!3d34.9063374!4d-82.3312004!16s%2Fg%2F11c3q3glwp!3m5!1s0x88582c4757a2afe3:0x303e27731ed027e5!8m2!3d34.9067208!4d-82.3314963!16s%2Fg%2F1tj539jz?entry=ttu&amp;g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D">Get directions</a></p>
+    </div>
+  </div>
+  <div class="wrap">
+    <iframe class="map" loading="lazy" title="Map to Ginza Buffet Taylors" src="https://maps.google.com/maps?q=Ginza+Buffet,+3023+Wade+Hampton+Blvd,+Taylors,+SC+29687&amp;ll=34.9067208,-82.3314963&amp;z=17&amp;output=embed"></iframe>
+  </div>
+</section>
+
+<footer>
+  <p><strong style="color:#fff">GINZA BUFFET - Taylors</strong><br>3023 Wade Hampton Blvd, Taylors, SC 29687 · <a href="tel:8642686566">(864) 268-6566</a></p>
+  <p>Copyright © <span id="yr">2026</span> Ginza Buffet - Taylors - All Rights Reserved.</p>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

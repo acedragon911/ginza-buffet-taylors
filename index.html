@@ -2,250 +2,280 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ginza Buffet - Taylors</title>
-<meta name="description" content="Ginza Buffet in Taylors, SC — over 200 Chinese, Japanese, Seafood and BBQ items, hibachi grill and sushi. 3023 Wade Hampton Blvd, Taylors, SC 29687. (864) 268-6566.">
+<meta name="description" content="Scroll through Ginza Buffet in Taylors, SC — sushi, seafood, hibachi and Chinese favorites. 3023 Wade Hampton Blvd, Taylors, SC 29687.">
 <link rel="icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Restaurant","name":"Ginza Buffet - Taylors","servesCuisine":["Chinese","Japanese","Seafood","Sushi","BBQ"],"telephone":"+1-864-268-6566","address":{"@type":"PostalAddress","streetAddress":"3023 Wade Hampton Blvd","addressLocality":"Taylors","addressRegion":"SC","postalCode":"29687","addressCountry":"US"}}
-</script>
 <style>
-:root{--red:#c70000;--red-hover:#f60000;--ink:#1b1b1b;--muted:#5e5e5e;--line:#e2e2e2;--soft:#f6f6f6;--bg:#fff}
+:root{--red:#c70000;--red-hover:#f60000;--ink:#1b1b1b;--bg:#0d0d0d;--text:#fff}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:'Open Sans',Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
-h1,h2,h3,h4{font-family:'League Spartan',Arial,sans-serif;font-weight:400;line-height:1.2;margin:0 0 .5em}
-a{color:var(--red)}
-img{max-width:100%;display:block}
-.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
-section{padding:56px 0}
-.center{text-align:center}
-.rule{width:50px;border:0;border-bottom:2px solid var(--line);margin:0 auto 32px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 32px;border-radius:4px;background:var(--red);color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.071em;font-weight:700;font-size:14px;border:0;cursor:pointer;transition:background .2s}
-.btn:hover{background:var(--red-hover)}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Open Sans',Helvetica,Arial,sans-serif}
+h1,h2{font-family:'League Spartan',Arial,sans-serif;font-weight:700;line-height:1.05;margin:0}
+a{color:inherit}
 
 /* header */
-header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:80px}
-header img{height:64px;width:auto}
-header nav{display:flex;gap:24px;font-size:14px;text-transform:uppercase;letter-spacing:.06em}
-header nav a{color:var(--ink);text-decoration:none}
-header nav a:hover{color:var(--red)}
-.hdr-phone{font-weight:700;color:var(--red);text-decoration:none;white-space:nowrap}
-@media (max-width:760px){header nav{display:none}header img{height:52px}}
+header{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;transition:background .25s;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))}
+header.solid{background:rgba(13,13,13,.94)}
+header img{height:52px;width:auto;background:#fff;border-radius:6px;padding:4px}
+header nav{display:flex;gap:10px;align-items:center}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;text-decoration:none;
+  font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.pill.ghost{border:1px solid rgba(255,255,255,.7);background:rgba(0,0,0,.35);color:#fff}
+.pill.solid{background:var(--red)}
+.pill.solid:hover{background:var(--red-hover)}
+.short{display:none}
+@media (max-width:520px){
+  header{gap:8px}
+  header nav{gap:8px}
+  header .pill{padding:0 12px;font-size:12px;letter-spacing:.02em;white-space:nowrap}
+  header .long{display:none}
+  header .short{display:inline}
+}
 
-/* hero */
-.hero{position:relative;min-height:560px;display:flex;align-items:center;color:#000;
-  background:linear-gradient(rgba(255,255,255,.25),rgba(255,255,255,.25)),url(images/hero.jpg) center/cover no-repeat}
-.hero-card{background:rgba(255,255,255,.88);padding:40px 32px;max-width:560px;border-radius:4px}
-.hero h1{font-size:40px}
-.hero p{font-size:18px;margin:0 0 24px}
-@media (max-width:600px){.hero{min-height:480px}.hero h1{font-size:30px}.hero-card{padding:28px 20px}}
+/* scroll story */
+.story{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform,opacity}
+.layer.img{opacity:0}
+video.layer{display:none}
+.story.has-video video.layer{display:block}
+.story.has-video .layer.img{display:none}
+.shade{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,.75) 100%)}
 
-/* about */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.about h2{font-size:32px;color:var(--red)}
-.about h3{font-size:22px}
-.about p{color:var(--muted)}
-.about img{border-radius:4px;width:100%;max-width:460px;margin:0 auto}
-@media (max-width:860px){.about{grid-template-columns:1fr}}
+.caption{position:absolute;left:0;right:0;bottom:12vh;padding:0 16px;text-align:center;opacity:0;will-change:transform,opacity}
+.caption .kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:#ffd2d2;margin-bottom:12px}
+.caption h2{font-size:clamp(36px,7vw,84px);text-shadow:0 2px 24px rgba(0,0,0,.5)}
+.caption p{max-width:620px;margin:16px auto 0;font-size:clamp(16px,2vw,20px);line-height:1.5;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.caption .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
 
-/* served */
-.served{background:var(--soft)}
-.served ul{list-style:none;padding:0;margin:0 auto;max-width:640px;display:grid;gap:12px}
-.served li{background:#fff;border:1px solid var(--line);border-radius:4px;padding:14px 18px;font-weight:600}
-.served li::before{content:"✓";color:var(--red);margin-right:10px}
+/* progress */
+.progress{position:absolute;left:0;top:0;height:3px;background:var(--red);width:0;z-index:5}
+.dots{position:absolute;right:4px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;z-index:5}
+.dots button{width:44px;height:36px;border:0;background:transparent;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots button::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-sizing:border-box;box-shadow:0 0 6px rgba(0,0,0,.5)}
+.dots button.on::before{background:#fff}
+.hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:.8;transition:opacity .3s}
+@media (max-width:520px){
+  .dots{right:0}
+  .dots button{width:36px;height:32px}
+  .caption{padding:0 40px 0 20px;bottom:calc(10vh + env(safe-area-inset-bottom))}
+  .caption .kicker{font-size:11px;letter-spacing:.14em}
+  header img{height:40px}
+  .pill{min-height:44px;padding:0 14px;font-size:13px}
+}
+@media (max-height:500px) and (orientation:landscape){
+  .caption{bottom:52px}
+  .caption p{display:none}
+  .hint{bottom:12px}
+  .caption h2{font-size:clamp(28px,6vw,48px)}
+}
 
-/* categories */
-.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
-.cat img{aspect-ratio:2/1;object-fit:cover;width:100%;border-radius:4px;margin-bottom:16px}
-.cat h4{font-size:22px;color:#151515}
-.cat p{color:var(--muted);margin:0}
-@media (max-width:700px){.cats{grid-template-columns:1fr}}
+/* after the story */
+.visit{background:#fff;color:var(--ink);padding:96px 16px calc(64px + env(safe-area-inset-bottom));text-align:center}
+.visit h2{font-size:clamp(28px,5vw,44px);color:var(--red);margin-bottom:12px}
+.visit p{margin:4px 0;color:#5e5e5e}
+footer{background:#151515;color:#c6c6c6;text-align:center;padding:24px 16px;font-size:14px}
 
-/* menu */
-.menu{background:var(--soft)}
-.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.menu-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:28px 24px}
-.menu-card h3{font-size:22px;color:var(--red);margin-bottom:4px}
-.menu-card .when{font-size:13px;color:var(--muted);margin-bottom:16px}
-.row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
-.row:last-child{border-bottom:0}
-.row small{display:block;color:var(--muted);font-size:12px}
-.row b{white-space:nowrap}
-.offer{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.offer .menu-card p{margin:0;color:var(--muted)}
-.note{text-align:center;font-weight:700;margin-top:24px;font-size:14px}
-@media (max-width:900px){.menu-grid{grid-template-columns:1fr}.offer{grid-template-columns:1fr}}
+:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
-/* contact */
-.contact{text-align:center}
-.info h4{font-size:22px;margin-top:24px}
-.info p{margin:0 0 6px;color:var(--muted)}
-.map{margin-top:40px;border:0;width:100%;height:360px;border-radius:4px}
-
-footer{background:#151515;color:#c6c6c6;text-align:center;padding:32px 16px;font-size:14px}
-footer a{color:#fff;text-decoration:none}
+/* Reduced motion: no scrubbing or zooming — show each scene as a plain section. */
+@media (prefers-reduced-motion: reduce){
+  .story{height:auto!important}
+  .stage{position:relative;height:auto;overflow:visible}
+  .layer,.shade,.progress,.dots,.hint{display:none!important}
+  .caption{position:relative;bottom:auto;opacity:1!important;transform:none!important;padding:96px 16px;
+    background-size:cover;background-position:center}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <a href="#top"><img src="images/logo.png" alt="Ginza Buffet"></a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#categories">Categories</a>
-      <a href="#menu">Menu</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="hdr-phone" href="tel:8642686566">(864) 268-6566</a>
-  </div>
+  <a href="index.html" aria-label="Ginza Buffet home"><img src="images/logo.png" alt="Ginza Buffet"></a>
+  <nav>
+    <a class="pill ghost" href="menu.html#menu">Menu &amp; Prices</a>
+    <a class="pill solid" href="tel:8642686566" aria-label="Call (864) 268-6566"><span class="long">Call (864) 268-6566</span><span class="short">Call Now</span></a>
+  </nav>
 </header>
 
-<section class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-card">
-      <h1>WELCOME TO GINZA BUFFET (Taylors)</h1>
-      <p>Dine-in • Carry out • JAPANESE • SEAFOOD • BBQ • CHINESE</p>
-      <a class="btn" href="tel:8642686566">Call For Details</a>
+<section class="story" id="story" aria-label="Ginza Buffet story">
+  <div class="stage" id="stage">
+    <!-- Video mode: when STORY_VIDEO loads, scrolling scrubs this video. -->
+    <video class="layer" id="video" muted playsinline preload="auto" aria-hidden="true"></video>
+    <!-- Photo mode (fallback): images and captions are generated from SCENES below. -->
+    <div class="shade"></div>
+    <div class="progress" id="progress"></div>
+    <div class="dots" id="dots" aria-label="Jump to scene"></div>
+    <div class="hint" id="hint">Scroll ↓</div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <h2>See you soon!</h2>
+  <p><strong>Ginza Buffet - Taylors</strong></p>
+  <p>3023 Wade Hampton Blvd, Taylors, SC 29687</p>
+  <p>Sun. - Thu. 11:00 am – 9:30 pm</p>
+  <p>Fri. - Sat. 11:00 am – 10:00 pm</p>
+  <div class="caption" style="position:static;opacity:1;padding:0">
+    <div class="ctas">
+      <a class="pill solid" style="color:#fff" href="tel:8642686566">Call (864) 268-6566</a>
+      <a class="pill solid" style="color:#fff" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Ginza+Buffet/@34.9067487,-82.3318258,18.38z/data=!3m1!5s0x88582c38868030b5:0x6add8c6dda063120!4m15!1m8!3m7!1s0x88582c3886806ce1:0x17685b9fcf6e4e97!2s3023+Wade+Hampton+Blvd,+Taylors,+SC+29687!3b1!8m2!3d34.9063374!4d-82.3312004!16s%2Fg%2F11c3q3glwp!3m5!1s0x88582c4757a2afe3:0x303e27731ed027e5!8m2!3d34.9067208!4d-82.3314963!16s%2Fg%2F1tj539jz?entry=ttu&amp;g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D">Get directions</a>
+      <a class="pill solid" style="color:#fff" href="menu.html#menu">Menu &amp; Prices</a>
     </div>
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap about">
-    <div>
-      <h2>ALL YOUR FAVORITE DISHES - ALL IN ONE PLACE</h2>
-      <h3>The Largest and Most Elegant Chinese, Japanese &amp; Seafood Cuisine Restaurant in Taylors</h3>
-      <p>We have over 150 different items on our buffet. Plus we have a HIBACHI section where you can select your favorites and we will cook them for you on the HIBACHI at no additional charge.</p>
-      <p>We offer Ribeye Steak, Salmon Fish, Butter Shrimp, Black Pepper Shrimp, Crabmeat, Cheese, General’s Chicken &amp; Different Selections of Sushi. Large selection of salads, fruits, and desserts.</p>
-      <p>We have a huge private room available for birthday parties, office meetings, and weddings.</p>
-      <p><strong>Ask For More Information. Call Us Please</strong><br>Phone: <a href="tel:8642686566">(864) 268-6566</a></p>
-    </div>
-    <img src="images/flyer.jpeg" alt="Ginza Buffet — sushi, Japanese food, seafood, BBQ and Chinese food">
-  </div>
-</section>
-
-<section class="served">
-  <div class="wrap center">
-    <h2 style="font-size:32px">What we served.</h2>
-    <hr class="rule">
-    <ul style="text-align:left">
-      <li>Over 200 items</li>
-      <li>All you can eat &amp; Carry out to go &amp; Take out</li>
-      <li>Party room available</li>
-      <li>Gift Certificates Available</li>
-    </ul>
-    <p style="margin-top:32px"><a class="btn" href="#contact">Contact us</a></p>
-  </div>
-</section>
-
-<section id="categories">
-  <div class="wrap">
-    <h2 class="center" style="font-size:32px">CATEGORIES</h2>
-    <hr class="rule">
-    <div class="cats">
-      <div class="cat">
-        <img src="images/bbq.jpg" alt="BBQ" loading="lazy">
-        <h4>BBQ</h4>
-        <p>Barbecue is a method and apparatus for cooking food, often meat, with the heat and hot gases of a fire, smoking wood, or hot coals of charcoal. It may also include application of a marinade, spice rub, or basting sauce to the meat. The techniques used in barbecue are hot smoking and smoke cooking.</p>
-      </div>
-      <div class="cat">
-        <img src="images/seafood.jpg" alt="Seafood" loading="lazy">
-        <h4>SEAFOOD</h4>
-        <p>Come discover wide selection of seafood such as Crab, Mussels, Jumbo Shrimp, Clam, Fish, Crawfish, Squid and more seasonal choices throughout the year.</p>
-      </div>
-      <div class="cat">
-        <img src="images/sushi.jpg" alt="Sushi" loading="lazy">
-        <h4>SUSHI</h4>
-        <p>Each morning our sushi chefs carefully select the freshest seasonal fish and other ingredients, then prepare an assortment of over 20 kinds of Nigiri, Sushi and Sashimi. You always enjoy the freshest and most delicious sushi any time.</p>
-      </div>
-      <div class="cat">
-        <img src="images/chinese.jpg" alt="Chinese" loading="lazy">
-        <h4>CHINESE</h4>
-        <p>Variation of the best quality meat with dishes such as bacon wrapped chicken, poultry over our special sauce, and more. Delight yourself with the best quality meat.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="menu" id="menu">
-  <div class="wrap">
-    <h2 class="center" style="font-size:32px">MENU - All You Can Eat Buffet Price</h2>
-    <hr class="rule">
-    <div class="menu-grid">
-      <div class="menu-card">
-        <h3>LUNCH BUFFET</h3>
-        <div class="when">Monday - Friday 11:00 am - 3:00 pm</div>
-        <div class="row"><span>Adult</span><b>$14.99</b></div>
-        <div class="row"><span>Kids<small>7-10 yrs old</small></span><b>$8.99</b></div>
-        <div class="row"><span>Kids<small>3-6 yrs old</small></span><b>$5.99</b></div>
-        <div class="row"><span>Kids<small>2 yrs old</small></span><b>$2.99</b></div>
-        <div class="row"><span>Beverage</span><b>$2.99</b></div>
-      </div>
-      <div class="menu-card">
-        <h3>DINNER BUFFET</h3>
-        <div class="when">Monday - Friday 3:00 pm - 9:30 pm</div>
-        <div class="row"><span>Adult</span><b>$19.99</b></div>
-        <div class="row"><span>Kids<small>7-10 yrs old</small></span><b>$13.99</b></div>
-        <div class="row"><span>Kids<small>3-6 yrs old</small></span><b>$7.99</b></div>
-        <div class="row"><span>Kids<small>2 yrs old</small></span><b>$3.99</b></div>
-        <div class="row"><span>Beverage</span><b>$2.99</b></div>
-      </div>
-      <div class="menu-card">
-        <h3>SAT. &amp; SUN. ALL DAY DINNER</h3>
-        <div class="when">Saturday 11:00 am - 10:00 pm<br>Sunday 11:00 am - 9:30 pm</div>
-        <div class="row"><span>Adult</span><b>$19.99</b></div>
-        <div class="row"><span>Beverage</span><b>$2.99</b></div>
-      </div>
-    </div>
-    <p class="note">Prices do not include beverage.</p>
-    <div class="offer">
-      <div class="menu-card">
-        <h3>SPECIAL OFFER</h3>
-        <div class="when">Cannot be combined with any other offers</div>
-        <div class="row"><span>Senior Citizen<small>Applicable to 65 yrs old &amp; above. Please present a valid ID.</small></span><b>$1.00 OFF</b></div>
-      </div>
-      <div class="menu-card">
-        <h3>EXTRA CHARGE</h3>
-        <p>A 12% gratuity will be added to all parties of 6 or more people (including children).</p>
-      </div>
-    </div>
-    <p class="note">* HOLIDAY PRICES ARE SUBJECT TO CHANGE WITHOUT NOTICE</p>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap contact">
-    <div class="info">
-      <h2 style="font-size:32px">Better yet, see us in person!</h2>
-      <p>We love our customers, so feel free to visit during normal business hours.</p>
-      <h4>GINZA BUFFET - Taylors</h4>
-      <p>3023 Wade Hampton Blvd, Taylors, SC 29687</p>
-      <p><a href="tel:8642686566">(864) 268-6566</a></p>
-      <h4>Business Hours</h4>
-      <p>Sun. - Thu.: 11:00 am – 9:30 pm</p>
-      <p>Fri. - Sat.: 11:00 am – 10:00 pm</p>
-      <p>Lunch: 11:00 am - 3:00 pm</p>
-      <p>Dinner: 3:00 pm - 9:30 pm</p>
-      <p style="margin-top:16px"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Ginza+Buffet/@34.9067487,-82.3318258,18.38z/data=!3m1!5s0x88582c38868030b5:0x6add8c6dda063120!4m15!1m8!3m7!1s0x88582c3886806ce1:0x17685b9fcf6e4e97!2s3023+Wade+Hampton+Blvd,+Taylors,+SC+29687!3b1!8m2!3d34.9063374!4d-82.3312004!16s%2Fg%2F11c3q3glwp!3m5!1s0x88582c4757a2afe3:0x303e27731ed027e5!8m2!3d34.9067208!4d-82.3314963!16s%2Fg%2F1tj539jz?entry=ttu&amp;g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D">Get directions</a></p>
-    </div>
-  </div>
-  <div class="wrap">
-    <iframe class="map" loading="lazy" title="Map to Ginza Buffet Taylors" src="https://maps.google.com/maps?q=Ginza+Buffet,+3023+Wade+Hampton+Blvd,+Taylors,+SC+29687&amp;ll=34.9067208,-82.3314963&amp;z=17&amp;output=embed"></iframe>
-  </div>
-</section>
-
-<footer>
-  <p><strong style="color:#fff">GINZA BUFFET - Taylors</strong><br>3023 Wade Hampton Blvd, Taylors, SC 29687 · <a href="tel:8642686566">(864) 268-6566</a></p>
-  <p>Copyright © <span id="yr">2026</span> Ginza Buffet - Taylors - All Rights Reserved.</p>
-</footer>
+<footer>Copyright © <span id="yr">2026</span> Ginza Buffet - Taylors - All Rights Reserved.</footer>
 
 <script>
+/* ============ EDIT HERE ============
+ * STORY_VIDEO: path to one video that covers the whole story, e.g. "videos/story.mp4".
+ *   Leave "" to use photo mode. For smooth scrubbing, encode with a keyframe on
+ *   (almost) every frame, e.g.:
+ *   ffmpeg -i in.mp4 -an -c:v libx264 -g 4 -crf 23 -pix_fmt yuv420p -movflags +faststart videos/story.mp4
+ * SCENES: one entry per stop on the scroll. In video mode the captions are spread
+ *   evenly across the video's length; in photo mode each scene shows its image.
+ */
+const STORY_VIDEO = "";
+const SCENES = [
+  { img: "images/hero.jpg",    kicker: "Taylors, SC",        title: "Welcome to Ginza Buffet",
+    text: "Over 200 Japanese, Chinese, seafood and hibachi favorites — all in one place." },
+  { img: "images/sushi.jpg",   kicker: "Made fresh daily",   title: "Sushi & Sashimi",
+    text: "Our sushi chefs prepare over 20 kinds of nigiri, rolls and sashimi every day." },
+  { img: "images/seafood.jpg", kicker: "From the sea",       title: "Seafood",
+    text: "Mussels, jumbo shrimp, clams, fish, crawfish, squid and seasonal catches." },
+  { img: "images/chinese.jpg", kicker: "Cooked to order",    title: "Hibachi & Chinese",
+    text: "Pick your favorites and we'll cook them on the hibachi — at no extra charge." },
+  { img: "images/bbq.jpg",     kicker: "Something for everyone", title: "Hot Dishes & Desserts",
+    text: "Fried rice, General's Chicken, salads, fruit and desserts for the whole family." },
+  { img: "images/hero.jpg",    kicker: "Lunch $14.99 · Dinner $19.99", title: "Come Hungry",
+    text: "Party room available for birthdays, meetings and weddings.", cta: true },
+];
+/* =================================== */
+
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Once the story has scrolled away, give the header a solid background so it
+// stays readable over the white section below.
+const header = document.querySelector('header');
+const syncHeader = () => header.classList.toggle('solid',
+  document.getElementById('story').getBoundingClientRect().bottom <= header.offsetHeight);
+addEventListener('scroll', syncHeader, { passive: true });
+addEventListener('resize', syncHeader);
+syncHeader();
+
+const story = document.getElementById('story');
+const stage = document.getElementById('stage');
+const video = document.getElementById('video');
+const progressBar = document.getElementById('progress');
+const dotsEl = document.getElementById('dots');
+const hint = document.getElementById('hint');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const N = SCENES.length;
+
+// Build image layers, captions and dots from SCENES.
+const images = [], captions = [], dots = [];
+SCENES.forEach((s, i) => {
+  const img = new Image();
+  img.className = 'layer img';
+  img.src = s.img; img.alt = '';
+  img.decoding = 'async';
+  if (i > 1) img.loading = 'lazy';
+  stage.insertBefore(img, stage.querySelector('.shade'));
+  images.push(img);
+
+  const cap = document.createElement('div');
+  cap.className = 'caption';
+  cap.innerHTML = `<span class="kicker"></span><h2></h2><p></p>` +
+    (s.cta ? `<div class="ctas"><a class="pill solid" href="tel:8642686566">Call Us</a>` +
+             `<a class="pill ghost" href="menu.html#menu">See Prices</a></div>` : '');
+  cap.querySelector('.kicker').textContent = s.kicker || '';
+  cap.querySelector('h2').textContent = s.title;
+  cap.querySelector('p').textContent = s.text || '';
+  if (reduceMotion) cap.style.backgroundImage =
+    `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url(${s.img})`;
+  stage.appendChild(cap);
+  captions.push(cap);
+
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.setAttribute('aria-label', `Go to: ${s.title}`);
+  dot.addEventListener('click', () => scrollToScene(i));
+  dotsEl.appendChild(dot);
+  dots.push(dot);
+});
+
+// Each scene gets one screen of scroll distance.
+// svh = viewport height with the mobile address bar shown, so the track does not
+// change length (and jump) when the bar slides away during scrolling.
+const VH_UNIT = CSS.supports('height', '100svh') ? 'svh' : 'vh';
+function sizeStory() { story.style.height = (N * 100) + VH_UNIT; }
+sizeStory();
+function stageHeight() { return stage.offsetHeight || innerHeight; }
+
+function storyProgress() {
+  const r = story.getBoundingClientRect();
+  const span = r.height - stageHeight();
+  return span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+}
+function scrollToScene(i) {
+  const span = story.offsetHeight - stageHeight();
+  scrollTo({ top: story.offsetTop + span * (i / (N - 1)), behavior: reduceMotion ? 'auto' : 'smooth' });
+}
+
+// Plateau fade: fully visible near the scene's centre, fading at the edges.
+const plateau = (d, hold, fade) => d <= hold ? 1 : d >= hold + fade ? 0 : 1 - (d - hold) / fade;
+
+let videoReady = false, current = 0;
+if (STORY_VIDEO && !reduceMotion) {
+  video.src = STORY_VIDEO;
+  video.addEventListener('loadedmetadata', () => {
+    videoReady = true;
+    story.classList.add('has-video');
+    video.pause();
+  }, { once: true });
+  video.addEventListener('error', () => { videoReady = false; story.classList.remove('has-video'); }, { once: true });
+  // iOS Safari will not fetch or seek a video until it has been played once.
+  const unlock = () => { video.play().then(() => video.pause()).catch(() => {}); };
+  addEventListener('touchstart', unlock, { once: true, passive: true });
+}
+
+function render() {
+  const target = storyProgress();
+  current += (target - current) * 0.18;            // ease toward the scroll position
+  if (Math.abs(target - current) < 0.0005) current = target;
+  const s = current * (N - 1);                      // fractional scene index
+
+  if (videoReady && video.duration) {
+    const t = current * (video.duration - 0.05);
+    if (Math.abs(video.currentTime - t) > 0.01) video.currentTime = t;
+  } else {
+    images.forEach((img, i) => {
+      const d = Math.abs(s - i);
+      img.style.opacity = plateau(d, 0.3, 0.5);
+      const zoom = 1.04 + 0.08 * Math.min(1, Math.max(0, (s - i + 1) / 2));   // slow push-in
+      img.style.transform = `scale(${zoom.toFixed(4)})`;
+    });
+  }
+  captions.forEach((cap, i) => {
+    const d = s - i;
+    cap.style.opacity = plateau(Math.abs(d), 0.18, 0.25);
+    cap.style.transform = `translateY(${(-d * 60).toFixed(1)}px)`;
+    cap.style.pointerEvents = Math.abs(d) < 0.3 ? 'auto' : 'none';
+  });
+  const active = Math.round(s);
+  dots.forEach((dot, i) => dot.classList.toggle('on', i === active));
+  progressBar.style.width = (current * 100).toFixed(2) + '%';
+  hint.style.opacity = current < 0.02 ? 0.8 : 0;
+  requestAnimationFrame(render);
+}
+if (!reduceMotion) requestAnimationFrame(render);
 </script>
 </body>
 </html>
