@@ -26,7 +26,14 @@ header nav{display:flex;gap:10px;align-items:center}
 .pill.ghost{border:1px solid rgba(255,255,255,.7);background:rgba(0,0,0,.35);color:#fff}
 .pill.solid{background:var(--red)}
 .pill.solid:hover{background:var(--red-hover)}
-@media (max-width:520px){header .pill.ghost{display:none}}
+.short{display:none}
+@media (max-width:520px){
+  header{gap:8px}
+  header nav{gap:8px}
+  header .pill{padding:0 12px;font-size:12px;letter-spacing:.02em;white-space:nowrap}
+  header .long{display:none}
+  header .short{display:inline}
+}
 
 /* scroll story */
 .story{position:relative}
@@ -59,7 +66,7 @@ video.layer{display:none}
   .dots button{width:36px;height:32px}
   .caption{padding:0 40px 0 20px;bottom:calc(10vh + env(safe-area-inset-bottom))}
   .caption .kicker{font-size:11px;letter-spacing:.14em}
-  header img{height:44px}
+  header img{height:40px}
   .pill{min-height:44px;padding:0 14px;font-size:13px}
 }
 @media (max-height:500px) and (orientation:landscape){
@@ -93,7 +100,7 @@ footer{background:#151515;color:#c6c6c6;text-align:center;padding:24px 16px;font
   <a href="index.html" aria-label="Ginza Buffet home"><img src="images/logo.png" alt="Ginza Buffet"></a>
   <nav>
     <a class="pill ghost" href="index.html#menu">Menu &amp; Prices</a>
-    <a class="pill solid" href="tel:8642686566">Call (864) 268-6566</a>
+    <a class="pill solid" href="tel:8642686566" aria-label="Call (864) 268-6566"><span class="long">Call (864) 268-6566</span><span class="short">Call Now</span></a>
   </nav>
 </header>
 
