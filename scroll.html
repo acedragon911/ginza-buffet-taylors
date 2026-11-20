@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ginza Buffet - Our Story</title>
 <meta name="description" content="Scroll through Ginza Buffet in Taylors, SC — sushi, seafood, hibachi and Chinese favorites. 3023 Wade Hampton Blvd, Taylors, SC 29687.">
 <link rel="icon" href="images/logo.png">
@@ -17,15 +17,16 @@ a{color:inherit}
 
 /* header */
 header{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:12px 16px;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))}
+  gap:12px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;transition:background .25s;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))}
+header.solid{background:rgba(13,13,13,.94)}
 header img{height:52px;width:auto;background:#fff;border-radius:6px;padding:4px}
 header nav{display:flex;gap:10px;align-items:center}
 .pill{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;text-decoration:none;
   font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
-.pill.ghost{border:1px solid rgba(255,255,255,.6)}
+.pill.ghost{border:1px solid rgba(255,255,255,.7);background:rgba(0,0,0,.35);color:#fff}
 .pill.solid{background:var(--red)}
 .pill.solid:hover{background:var(--red-hover)}
-@media (max-width:520px){.pill.ghost{display:none}}
+@media (max-width:520px){header .pill.ghost{display:none}}
 
 /* scroll story */
 .story{position:relative}
@@ -47,15 +48,29 @@ video.layer{display:none}
 
 /* progress */
 .progress{position:absolute;left:0;top:0;height:3px;background:var(--red);width:0;z-index:5}
-.dots{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:5}
-.dots button{width:12px;height:12px;border-radius:50%;border:2px solid #fff;background:transparent;padding:0;cursor:pointer}
-.dots button.on{background:#fff}
+.dots{position:absolute;right:4px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;z-index:5}
+.dots button{width:44px;height:36px;border:0;background:transparent;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots button::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-sizing:border-box;box-shadow:0 0 6px rgba(0,0,0,.5)}
+.dots button.on::before{background:#fff}
 .hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font-size:12px;letter-spacing:.2em;
   text-transform:uppercase;opacity:.8;transition:opacity .3s}
-@media (max-width:520px){.dots{right:8px}}
+@media (max-width:520px){
+  .dots{right:0}
+  .dots button{width:36px;height:32px}
+  .caption{padding:0 40px 0 20px;bottom:calc(10vh + env(safe-area-inset-bottom))}
+  .caption .kicker{font-size:11px;letter-spacing:.14em}
+  header img{height:44px}
+  .pill{min-height:44px;padding:0 14px;font-size:13px}
+}
+@media (max-height:500px) and (orientation:landscape){
+  .caption{bottom:52px}
+  .caption p{display:none}
+  .hint{bottom:12px}
+  .caption h2{font-size:clamp(28px,6vw,48px)}
+}
 
 /* after the story */
-.visit{background:#fff;color:var(--ink);padding:64px 16px;text-align:center}
+.visit{background:#fff;color:var(--ink);padding:96px 16px calc(64px + env(safe-area-inset-bottom));text-align:center}
 .visit h2{font-size:clamp(28px,5vw,44px);color:var(--red);margin-bottom:12px}
 .visit p{margin:4px 0;color:#5e5e5e}
 footer{background:#151515;color:#c6c6c6;text-align:center;padding:24px 16px;font-size:14px}
@@ -98,7 +113,8 @@ footer{background:#151515;color:#c6c6c6;text-align:center;padding:24px 16px;font
   <h2>See you soon!</h2>
   <p><strong>Ginza Buffet - Taylors</strong></p>
   <p>3023 Wade Hampton Blvd, Taylors, SC 29687</p>
-  <p>Sun. - Thu. 11:00 am – 9:30 pm · Fri. - Sat. 11:00 am – 10:00 pm</p>
+  <p>Sun. - Thu. 11:00 am – 9:30 pm</p>
+  <p>Fri. - Sat. 11:00 am – 10:00 pm</p>
   <div class="caption" style="position:static;opacity:1;padding:0">
     <div class="ctas">
       <a class="pill solid" style="color:#fff" href="tel:8642686566">Call (864) 268-6566</a>
@@ -137,6 +153,15 @@ const SCENES = [
 /* =================================== */
 
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Once the story has scrolled away, give the header a solid background so it
+// stays readable over the white section below.
+const header = document.querySelector('header');
+const syncHeader = () => header.classList.toggle('solid',
+  document.getElementById('story').getBoundingClientRect().bottom <= header.offsetHeight);
+addEventListener('scroll', syncHeader, { passive: true });
+addEventListener('resize', syncHeader);
+syncHeader();
 
 const story = document.getElementById('story');
 const stage = document.getElementById('stage');
@@ -180,16 +205,20 @@ SCENES.forEach((s, i) => {
 });
 
 // Each scene gets one screen of scroll distance.
-function sizeStory() { story.style.height = (N * 100 + 0) + 'vh'; }
+// svh = viewport height with the mobile address bar shown, so the track does not
+// change length (and jump) when the bar slides away during scrolling.
+const VH_UNIT = CSS.supports('height', '100svh') ? 'svh' : 'vh';
+function sizeStory() { story.style.height = (N * 100) + VH_UNIT; }
 sizeStory();
+function stageHeight() { return stage.offsetHeight || innerHeight; }
 
 function storyProgress() {
   const r = story.getBoundingClientRect();
-  const span = r.height - innerHeight;
+  const span = r.height - stageHeight();
   return span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
 }
 function scrollToScene(i) {
-  const span = story.offsetHeight - innerHeight;
+  const span = story.offsetHeight - stageHeight();
   scrollTo({ top: story.offsetTop + span * (i / (N - 1)), behavior: reduceMotion ? 'auto' : 'smooth' });
 }
 
@@ -205,6 +234,9 @@ if (STORY_VIDEO && !reduceMotion) {
     video.pause();
   }, { once: true });
   video.addEventListener('error', () => { videoReady = false; story.classList.remove('has-video'); }, { once: true });
+  // iOS Safari will not fetch or seek a video until it has been played once.
+  const unlock = () => { video.play().then(() => video.pause()).catch(() => {}); };
+  addEventListener('touchstart', unlock, { once: true, passive: true });
 }
 
 function render() {
